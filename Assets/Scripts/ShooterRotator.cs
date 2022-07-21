@@ -16,27 +16,31 @@ public class ShooterRotator : MonoBehaviour
 
     void Update()
     {
-        if (state == RotateSate.Idle) 
+        switch (state)
+        {
 
-        {
-            if (Input.GetButtonDown("Fire1")) // 마우스를 누르는 순간
-            {
-                state = RotateSate.Horizontal; // Horizontal로 변경
-            }
-        }
-        else if (state == RotateSate.Horizontal) 
-        {
-            if (Input.GetButton("Fire1")) // 마우스를 누르고 있으면
-            {
-                // 회전한다
-                transform.Rotate(new Vector3(0, horizontalRotateSpeed * Time.deltaTime, 0));
-            }
-            else if (Input.GetButtonUp("Fire1")) // 마우스에서 손을 떼면
-            {
-                state = RotateSate.Vertical; // Horizontal에서 Vertical로 바꿔준다.
-            }
-            else if (state == RotateSate.Vertical)
-            {
+            case RotateSate.Idle:
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    state = RotateSate.Horizontal;
+                }
+                break;
+               
+
+            case RotateSate.Horizontal:
+                if(Input.GetButton("Fire1")) // 마우스를 누르고 있으면
+                {
+                    // 회전한다
+                    transform.Rotate(new Vector3(0, horizontalRotateSpeed * Time.deltaTime, 0));
+                }
+                else if (Input.GetButtonUp("Fire1")) // 마우스에서 손을 떼면
+                {
+                    state = RotateSate.Vertical; // Horizontal에서 Vertical로 바꿔준다.
+                }
+                break;
+
+
+            case RotateSate.Vertical:
                 if (Input.GetButton("Fire1")) // 마우스를 누르고 있으면
                 {
                     // x축에 대한 회전
@@ -46,11 +50,13 @@ public class ShooterRotator : MonoBehaviour
                 {
                     state = RotateSate.Ready; // 멈춰서 대기
                 }
-            }
+                break;
+
+
+            case RotateSate.Ready:
+                break;
+
         }
+        
     }
-
-
-
-
 }
