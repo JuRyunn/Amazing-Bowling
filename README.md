@@ -13,6 +13,12 @@
 #### Mask
 - 원하지않는 객체를 필터링해 원하는 물체만 가져오게해준다.
 
+#### Physics
+- Unity에서 제공하는 물리 기능 집합 함수.
+
+#### OverlapSphere, OverlapBox, OverlapCapsule
+- 위치를 지정해주면(물체의 중심과 반지름) 그 물체의 중심에 겹치는 모든 colider를 배열로 가져와준다.
+
 <br>
 
 #### Tag&Layer
