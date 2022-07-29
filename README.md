@@ -22,7 +22,6 @@
 #### AddExplosionForce
 - 어떤 지점의 폭발의 위치, 폭발력, 폭발 반경을 지정해주면 나 자신의 위치가 폭발의 원점으로부터 얼마나 떨어져있는지 계산해 튕겨나가는 정도를 적용해준다.
 
-<br>
 
 #### Tag&Layer
 ![image](https://user-images.githubusercontent.com/79950504/181768974-ca618df7-ef63-43ef-aad8-9d7c5cd5eb68.png)
