@@ -27,3 +27,9 @@
 ![image](https://user-images.githubusercontent.com/79950504/181768974-ca618df7-ef63-43ef-aad8-9d7c5cd5eb68.png)
 - 두개 모두 물체를 식별할 때 사용한다.
 - Tag는 1대1 비교만 가능하나 Layer는 필터링을 한번에 여러개 할 수 있다
+
+#### Render Mode
+![image](https://user-images.githubusercontent.com/79950504/181775606-c9c99efb-19a1-4eea-9b45-f01d3cf76a5f.png)
+- Screen Space Overlay: 캔버스의 기본 값으로 화면 전체에 항상 떠 있게 하며 3D 오브젝트보다 먼저 그려져 오브젝트 앞에 보인다.
+- Screen Space Camera: 카메라를 할당하여 카메라를 항상 따라다니게 할 수 있으며 3D 오브젝트를 기본적으로 화면 앞에 표시할 수 있다.
+- World SPace: 3D 게임을 만들 때 가장 많이 사용하며 3D 공간에서 3D 오브젝트를 배치하는 것처럼 자유자재로 사용할 수있다.
