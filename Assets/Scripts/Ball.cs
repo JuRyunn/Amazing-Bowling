@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    public LayerMask whatIsProp;
+
     public ParticleSystem explosionParticle;
     public AudioSource explosionAudio;
     public float maxDamage = 100f;
@@ -18,6 +20,21 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Collider[] coliders = Physics.OverlapSphere(transform.position, explosionRadius, whatIsProp);
+
+        for (int i = 0; i < coliders.Length; i++)
+        {
+            Rigidbody targetRigidbody = coliders[i].GetComponent<Rigidbody>();
+
+            targetRigidbody.AddExplosionForce(explosionForce, transform.position, explosionRadius);
+
+            Prop targetProp = coliders[i].GetComponent<Prop>();
+
+            float damage = CalculateDamage(coliders[i].transform.position);
+
+            targetProp.TakeDamage(damage);
+        }
+
         explosionParticle.transform.parent = null;
         explosionParticle.Play();
         explosionAudio.Play();
@@ -25,5 +42,19 @@ public class Ball : MonoBehaviour
         Destroy(explosionParticle.gameObject, explosionParticle.duration);
         Destroy(gameObject);
 
+    }
+
+    private float CalculateDamage(Vector3 targetPosition)
+    {
+        Vector3 explosionToTarget = targetPosition - transform.position;
+
+        float distance = explosionToTarget.magnitude;
+        float edgeToCenterDistance = explosionRadius - distance;
+        float percentage = edgeToCenterDistance / explosionRadius;
+        float damage = maxDamage * percentage;
+
+        damage = Mathf.Max(0, damage);
+
+        return damage;
     }
 }
