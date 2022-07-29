@@ -19,6 +19,9 @@
 #### OverlapSphere, OverlapBox, OverlapCapsule
 - 위치를 지정해주면(물체의 중심과 반지름) 그 물체의 중심에 겹치는 모든 colider를 배열로 가져와준다.
 
+#### AddExplosionForce
+- 어떤 지점의 폭발의 위치, 폭발력, 폭발 반경을 지정해주면 나 자신의 위치가 폭발의 원점으로부터 얼마나 떨어져있는지 계산해 튕겨나가는 정도를 적용해준다.
+
 <br>
 
 #### Tag&Layer
