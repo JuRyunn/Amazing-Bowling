@@ -6,3 +6,12 @@
 
 #### Particle System
 - 2D 이미지를 랜덤하게 생성해 특수효과를 만들어주는것.
+
+#### Instantiate()
+- 원본 게임 오브젝트를 넣어주면 그것을 새롭게 복사해준다.
+
+<br>
+<br>
+
+![image](https://user-images.githubusercontent.com/79950504/181768974-ca618df7-ef63-43ef-aad8-9d7c5cd5eb68.png)
+- Tag와 Layer의 차이점: 두개 모두 물체를 식별할 때 사용하지만 Tag는 1대1 비교만 가능하나 Layer는 필터링을 한번에 여러개 할 수 있다
