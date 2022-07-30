@@ -48,3 +48,9 @@
 
 #### Random.Range()
 - Unity에서 제공하는 내장 함수로 Min/Max 값을 지정하면 그 사이의 랜덤한 숫자 하나를 집어준다.
+
+#### Camera/Projection
+![image](https://user-images.githubusercontent.com/79950504/181917759-c85193c3-bc03-435b-9b12-d7d8cfb4d39c.png)
+- perspective: 
+- Orthographic: 
+
