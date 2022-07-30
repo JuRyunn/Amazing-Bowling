@@ -1,18 +1,85 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BallShooter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Rigidbody ball;
+    public Transform firePos;
+    public Slider powerSlider;
+    public AudioSource shootingAudio;
+    public AudioClip fireClip;
+    public AudioClip chargingClip;
+    
+    public float minForce = 15f;
+    public float maxForce = 30f;
+    public float chargingTime = 0.75f;
+
+    private float currentForce;
+    private float chargeSpeed;
+
+
+    private bool fired;
+    private void onEnable()
     {
-        
+        currentForce = minForce;
+        powerSlider.value = minForce;
+        fired = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        chargeSpeed = (maxForce - minForce) / chargingTime;
     }
+
+    private void Update()
+    {
+        if(fired == true)
+        {
+            return;
+        }
+
+        powerSlider.value = minForce;
+
+        if(currentForce >= maxForce && !fired)
+        {
+            currentForce = maxForce;
+        }
+        else if (Input.GetButtonDown("Fire1"))
+        {
+
+            fired = false;
+            currentForce = minForce;
+
+            shootingAudio.clip = chargingClip;
+            shootingAudio.Play();
+        }
+        else if(Input.GetButton("Fire1") && !fired)
+        {
+            currentForce = currentForce + chargeSpeed * Time.deltaTime;
+            powerSlider.value = currentForce;
+        }
+        else if (Input.GetButtonUp("Fire1") && !fired)
+        {
+            FIre();
+        }
+    }
+
+    private void FIre()
+    {
+        fired = true;
+
+        Rigidbody BallInstance= Instantiate(ball, firePos.position, firePos.rotation);
+
+        BallInstance.velocity = currentForce * firePos.forward;
+
+        shootingAudio.clip = fireClip;
+        shootingAudio.Play();
+
+        currentForce = minForce;
+    }
+
+
+
 }
