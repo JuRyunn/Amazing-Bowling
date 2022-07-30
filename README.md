@@ -36,3 +36,12 @@
 
 #### Reference Pixels Per Unit
 - 픽셀의 집적도로 숫자가 높을수록 화질이 진다.
+
+#### onEnable()
+- 컴포넌트가 꺼져있다가 켜지는 상태에서 매번 발동한다. <=> start()는 한번 발동.
+
+#### foward
+- transform의 앞 방향을 Vector3로 반환해준다.
+
+#### .identity
+- 0, 0, 0° 회전한 정도를 의미한다.
